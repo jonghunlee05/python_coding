@@ -1,16 +1,23 @@
 s = "pwwkew"
 
 longest = ""
+current = ""
 
-l = 0
 
 
-for r in range(len(s)):
-    if s[r] not in longest:
-        longest += s[r]
-    else:
-        l += 1
+for i in range(len(s)):
+    current += s[i]
+    if current in longest: 
+        current = ""
+        
+    if current not in longest:
+        if len(current) > len(longest):
+            print("longest: " + longest + " current: " + current)
+            longest = current
+            current = ""
+        
+
+    
+        
 
 print(longest)
-
-
