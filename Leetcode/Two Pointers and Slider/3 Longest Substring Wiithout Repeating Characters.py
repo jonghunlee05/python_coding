@@ -1,23 +1,18 @@
 s = "pwwkew"
 
-longest = ""
-current = ""
+seen = set()
+l = 0
+max_len = 0
 
-
-
-for i in range(len(s)):
-    current += s[i]
-    if current in longest: 
-        current = ""
-        
-    if current not in longest:
-        if len(current) > len(longest):
-            print("longest: " + longest + " current: " + current)
-            longest = current
-            current = ""
-        
-
+for r in range(len(s)):
     
-        
+    # if it is repeated, start moving the left window and drop that letter on the set. 
+    while s[r] in seen:
+        seen.removes(s[l])
+        l += 1
+    
+    seen.add(s[r])
+    max_len = max(max_len, r - l + 1)
 
-print(longest)
+
+print(max_len)
